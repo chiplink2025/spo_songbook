@@ -1,0 +1,1 @@
+1. Make it so when a song is in songs.csv, it is split up line-by-line in song_page.dart (delimiter can be "/")
