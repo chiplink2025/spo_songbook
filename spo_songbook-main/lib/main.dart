@@ -21,6 +21,7 @@ Future<List<Song>> readJSON() async {
     Song thisSong = Song(
         title: title,
         author: author,
+        copyright: "Saint Paul's Outreach"
         lyrics: lyrics,
         number: number
     );
