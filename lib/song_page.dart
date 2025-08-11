@@ -8,11 +8,11 @@ class SongPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Create a list of widgets instead of just lines
+    // Build lyric sections
     final List<Widget> lyricWidgets = [];
 
     for (var section in song.lyrics) {
-      final String sectionTitle = section[0];
+      final String sectionTitle = section[0]; // e.g., "Verse 1", "Chorus"
       final List<String> sectionLines = section[1].trim().split('\n');
 
       lyricWidgets.add(
@@ -28,28 +28,51 @@ class SongPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 4),
-            ...sectionLines.map((line) => Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 2),
-                  child: Text(
-                    line,
-                    style: const TextStyle(fontSize: 18),
-                  ),
-                )),
+            ...sectionLines.map(
+              (line) => Padding(
+                padding: const EdgeInsets.symmetric(vertical: 2),
+                child: Text(
+                  line,
+                  style: const TextStyle(fontSize: 18),
+                ),
+              ),
+            ),
             const SizedBox(height: 16), // space between sections
           ],
         ),
       );
     }
 
+    // Add copyright at the end
+    lyricWidgets.add(
+      Padding(
+        padding: const EdgeInsets.only(top: 24.0),
+        child: Text(
+          song.copyright,
+          style: const TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w300,
+          ),
+          textAlign: TextAlign.center,
+        ),
+      ),
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(song.title, style: const TextStyle(fontSize: 20)),
+            Text(
+              song.title,
+              style: const TextStyle(fontSize: 20),
+            ),
             Text(
               song.author,
-              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w300,
+              ),
             ),
           ],
         ),
