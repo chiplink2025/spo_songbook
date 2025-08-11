@@ -12,9 +12,9 @@ class SongbookApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final songs = [
-      Song(title: '10,000 Reasons', author: 'Matt Redman', lyrics: 'Bless the Lord O my soul, O my soul', number: 1),
-      Song(title: 'Be Thou My Vision', author: 'b', lyrics: 'Be Thou my Vision, O Lord of my heart...', number: 2),
-      Song(title: 'Come Thou Fount', author: 'c', lyrics: 'Come, Thou Fount of every blessing...', number: 3),
+      Song(title: "10,000 Reasons", author: "Matt Redman", lyrics: [["Refrain", "Bless the Lord O my soul, O my soul\nWorship his holy name\nSing like never before, O my soul\nI'll worship your holy name"], ["Verse 1", "The sun comes up, it's a new day dawning\nIt's time to sing your song again.\nWhatever may pass and whatever lies before me\nLet me be singing when the evening comes."]], number: 1),
+      Song(title: 'Be Thou My Vision', author: 'b', lyrics: [['Verse 1', 'Be Thou my Vision, O Lord of my heart...']], number: 2),
+      Song(title: 'Come Thou Fount', author: 'c', lyrics: [['Verse 1', 'Come, Thou Fount of every blessing...']], number: 3),
       // Add more songs
     ];
 

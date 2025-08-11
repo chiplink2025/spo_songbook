@@ -8,7 +8,38 @@ class SongPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> lines = song.lyrics.trim().split('\n');
+    // Create a list of widgets instead of just lines
+    final List<Widget> lyricWidgets = [];
+
+    for (var section in song.lyrics) {
+      final String sectionTitle = section[0];
+      final List<String> sectionLines = section[1].trim().split('\n');
+
+      lyricWidgets.add(
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              sectionTitle,
+              style: const TextStyle(
+                fontSize: 14,
+                fontStyle: FontStyle.italic,
+                color: Colors.grey,
+              ),
+            ),
+            const SizedBox(height: 4),
+            ...sectionLines.map((line) => Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 2),
+                  child: Text(
+                    line,
+                    style: const TextStyle(fontSize: 18),
+                  ),
+                )),
+            const SizedBox(height: 16), // space between sections
+          ],
+        ),
+      );
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -25,14 +56,8 @@ class SongPage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ListView.builder(
-          itemCount: lines.length,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 4.0),
-              child: Text(lines[index], style: const TextStyle(fontSize: 18)),
-            );
-          },
+        child: ListView(
+          children: lyricWidgets,
         ),
       ),
     );
