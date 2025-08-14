@@ -1,9 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'song_list.dart';
 import 'song.dart';
+import 'dart:convert';
 
 void main() {
   runApp(const SongbookApp());
+}
+
+Future<List<Song>> readJSON() async {
+  // Load from assets instead of file system
+  final contents = await rootBundle.loadString("assets/songs.json");
+  final List<dynamic> jsonList = jsonDecode(contents);
+
+  return jsonList.map((song) {
+    return Song(
+      title: song["title"],
+      author: song["author"],
+      copyright: song["copyright"],
+      lyrics: List<List<String>>.from(
+        song["lyrics"].map((sec) => List<String>.from(sec)),
+      ),
+      number: song["number"],
+    );
+  }).toList();
 }
 
 class SongbookApp extends StatelessWidget {
@@ -11,18 +31,33 @@ class SongbookApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final songs = [
-      Song(title: "10,000 Reasons", author: "Matt Redman", lyrics: [["Refrain", "Bless the Lord O my soul, O my soul\nWorship his holy name\nSing like never before, O my soul\nI'll worship your holy name"], ["Verse 1", "The sun comes up, it's a new day dawning\nIt's time to sing your song again.\nWhatever may pass and whatever lies before me\nLet me be singing when the evening comes."]], number: 1, copyright: "Copyright © 2011 Thankyou Music, Song No. 6016351, CCLI License # found on p.66"),
-      Song(title: 'Be Thou My Vision', author: 'b', lyrics: [['Verse 1', 'Be Thou my Vision, O Lord of my heart...']], number: 2, copyright: "Copyright"),
-      Song(title: 'Come Thou Fount', author: 'c', lyrics: [['Verse 1', 'Come, Thou Fount of every blessing...']], number: 3, copyright: "Copyright"),
-      // Add more songs
-    ];
+    final songsFuture = readJSON();
 
     return MaterialApp(
-      home: SongListScreen(songs: songs),
+      home: FutureBuilder<List<Song>>(
+        future: songsFuture,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Scaffold(
+              body: Center(child: CircularProgressIndicator()),
+            );
+          } else if (snapshot.hasError) {
+            return Scaffold(
+              body: Center(child: Text('Error: ${snapshot.error}')),
+            );
+          } else if (snapshot.hasData) {
+            return SongListScreen(songs: snapshot.data!);
+          } else {
+            return const Scaffold(
+              body: Center(child: Text('No songs found.')),
+            );
+          }
+        },
+      ),
     );
   }
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
