@@ -2,7 +2,7 @@
     {
         "title": "10,000 Reasons (Bless the Lord)",
         "author": "Matt Redman",
-        "lyrics": [["Refrain", "Bless the Lord O my soul, O my soul,\nWorship his holy name.\nSing like never before, O my soul,\nI'll worship your holy name."],
+        "lyrics": [["Refrain", "Bless the L%C%ord O my s%G%oul, O my soul,\nWorship his holy name.\nSing like never before, O my soul,\nI'll worship your holy name."],
         ["Verse 1", "The sun comes up, it's a new day dawning,\nIt's time to sing your song again.\nWhatever may pass and whatever lies before me,\nLet me be singing when the evening comes."],
         ["Verse 2", "You're rich in love and you're slow to anger,\nYour name is great and your heart is kind,\nFor all your goodness I will keep on singing,\n10,000 reasons for my heart to find."],
         ["Verse 3", "And on that day when my strength is failing,\nThe end draws near and my time has come,\nStill my soul will sing your praise un-ending\n10,000 years and then forever more."]],
@@ -18,5 +18,102 @@
         ["Ending", "The Lord is my light and my salvation\nMy confidence when I am afraid"]],
         "number": "2",
         "copyright": "© 2016 Sarah Spangenberg and Joseph Buganski. All rights reserved. Used by permission. "
+    },
+    {
+        "title": "All That is Good",
+        "author": "Ed Conlin",
+        "lyrics": [
+            ["Verse", "All that is good, all that is love,\nWhatever is holy, whatever is true\nYou are their source, You are their fount,\nYou Lord and You alone"],
+            ["Refrain", "Holy, Holy, Holy O Lord Most High\nHoly, Holy, Holy O Lord Most High\n(Repeat Verse)"],
+            ["Refrain", "Worthy, Worthy, Worthy O Lord Most High\nWorthy, Worthy, Worthy O Lord\nYou are Worthy O Lord\nYou are Worthy O Lord –Most High"]
+        ],
+        "number": "3",
+        "copyright": "Copyright © 1998 The Servants Of The Word. Song No. 4916642, CCLI License # found on p.66"
+    },
+    {
+        "title": "Alleluia! Sing to Jesus",
+        "author": "William Chatterton Dix",
+        "lyrics": [
+            ["Verse 1", "Alleluia, sing to Jesus!\nHis the scepter, his the throne\nAlleluia, his the triumph,\nHis the victory alone\nHark the songs of peaceful Zion,\nThunder like a mighty flood\nJesus out of every nation\nHath redeemed us by his blood"],
+            ["Verse 2", "Alleluia, not as orphans,\nAre we left in sorrow now.\nAlleluia, he is near us\nFaith believes nor questions how\nThough the cloud\nFrom sight received him,\nWhen the forty days were o’er,\nShall our hearts forget his promise\nI am with you evermore."],
+            ["Verse 3", "Alleluia, Bread of Heaven\nThou on earth our food our stay\nAlleluia, here the sinful,\nFlee to Thee from day to day\nIntercessor, friend of sinners\nEarth’s redeemer plead for me\nWhere the songs of all the sinless,\nSweep across the crystal sea."]
+        ],
+        "number": "4",
+        "copyright": "Public Domain"
+    },
+    {
+        "title": "Amazing Grace",
+        "author": "Edwin Othello Excell, John Newton, John P. Rees",
+        "lyrics": [
+            ["Verse 1", "Amazing grace how sweet the sound\nThat saved a wretch like me\nI once was lost but now am found\nWas blind but now I see"],
+            ["Verse 2", "'Twas grace that taught my heart to fear\nAnd grace my fears relieved\nHow precious did that grace appear\nThe hour I first believed"],
+            ["Verse 3", "The Lord has promised good to me\nHis Word my hope secures\nHe will my shield and portion be\nAs long as life endures"],
+            ["Verse 4", "Through many dangers toils and snares\nI have already come\n'Tis grace hath brought me safe thus far\nAnd grace will lead me home"],
+            ["Verse 5", "Yea when this flesh and heart shall fail\nAnd mortal life shall cease\nI shall possess within the veil\nA life of joy and peace"],
+            ["Verse 6", "When we've been there ten thousand years\nBright shining as the sun\nWe've no less days to sing God's praise\nThan when we first begun"]
+        ],
+        "number": "5",
+        "copyright": "Public Domain"
+    },
+    {
+        "title": "Arise O Lord",
+        "author": "John Hughes / Joseph Mathias",
+        "lyrics": [
+            ["Verse 1", "The Lord our God is,\nFaithful in all His, words and deeds\nHis steadfast love is, for all who call\nUpon His name"],
+            ["Verse 2", "And He has given us His word,\nThat He will send His Spirit,\nAnd make His dwelling in our midst"],
+            ["Refrain", "Arise, O Lord, and come to your resting place,\nLet your glory fill this temple,\nAnd salvation clothe your saints,\nArise, O Lord,\nAnd may your people rejoice in your goodness\nRemember your promise to us, and arise!"],
+            ["Verse 3", "The highest heavens,\nCannot contain, the Lord our God,\nNor any temple,\nThat man has built, upon the earth."],
+            ["Verse 4", "And who are we that God should come\nAnd make His home within us\nYet by your word let it be done"]
+        ],
+        "number": "6",
+        "copyright": "Copyright © Used with permission"
+    },
+    {
+        "title": "Ascribe to the Lord",
+        "author": "Jim Berlucchi",
+        "lyrics": [
+            ["Verse 1 (Women)", "Ascribe to the Lord, O heavenly beings\nAscribe to Him glory and strength\nO come ascribe to the Lord\nThe glory of His Name\nAnd worship Him in holy array"],
+            ["Verse 1 (Men)", "The voice of God is upon many waters\nThe God of glory, thundering forth\nThe voice of God,\nFull of majesty and power"],
+            ["Refrain", "Women: Alleluia!\nMen: The voice of the Lord\nBreaks the cedars of Lebanon\nWomen: Alleluia!\nMen: The voice of the Lord\nFlashes forth flames of fire\nWomen: Alleluia!\nMen: The voice of the Lord\nStrips the oaks and forests bare\nWomen: Alleluia!\nMen: And in his temple all cry “Glory!”"],
+            ["Verse 2 (Women)", "The Lord sits enthroned over all the flood\nFrom there he reigns\nEnthroned as King forever\nGiving his strength to the people\nWho know his name\nThe Lord blessing his people with peace"],
+            ["Verse 2 (Men)", "The voice of God is upon many waters\nThe God of glory thundering forth\nThe voice of God, full of majesty and power"]
+        ],
+        "number": "7",
+        "copyright": "Copyright © 1981 Songs Of The Sword Of The Spirit. Song No. 246203, CCLI License # found on p.66"
+    },
+    {
+        "title": "At the Name of Jesus",
+        "author": "Noel / James Cowan",
+        "lyrics": [
+            ["Verse 1", "At the name of Jesus, ev’ry knee shall bow\nEv’ry tongue confess Him\nKing of Glory now\n'Tis the Father's pleasure\nWe should call Him Lord\nWho from the beginning\nWas the mighty Word"],
+            ["Verse 2", "Humbled for a season, to receive a name\nFrom the lips of sinners\nUnto whom he came\nFaithfully he bore it, spotless to the last\nBrought it back victorious\nWhen through death he passed"],
+            ["Verse 3", "Bore it up triumphant, with its human light,\nThru all ranks of creatures,\nTo the central height,\nTo the throne of Godhead,\nTo the Father's breast\nFilled it with the glory, of that perfect rest."],
+            ["Verse 4", "In your hearts enthrone Him;\nThere let Him subdue\nAll that is not holy, all that is not true.\nCrown Him as your Captain\nIn temptation's hour;\nLet His will enfold you,\nIn its light and power."],
+            ["Verse 5", "Jesus Lord and Savior, shall return again,\nWith his Father's glory,\nO'er the earth to reign.\nFor all wreaths of empire,\nMeet upon his brow,\nAnd our hearts confess Him\nKing of Glory now."]
+        ],
+        "number": "8",
+        "copyright": "Copyright © 1986 International Liturgy Publications. Song No. 2483232, CCLI License # found on p.66"
+    },
+    {
+        "title": "The Battle Belongs to the Lord",
+        "author": "Jamie Owens-Collins",
+        "lyrics": [
+            ["Verse 1", "In heavenly armor we'll enter the land,\nThe battle belongs to the Lord!\nNo weapon that's fashioned\nAgainst us will stand,\nThe battle belongs to the Lord!"],
+            ["Refrain", "And we sing glory, honor,\nPower and strength to the Lord. (2x)"],
+            ["Verse 2", "When the power of darkness\nComes in like a flood,\nThe battle belongs to the Lord!\nHe's raised up a standard,\nThe power of His blood,\nThe battle belongs to the Lord!"],
+            ["Verse 3", "When your enemy presses\nIn hard do not fear,\nThe battle belongs to the Lord!\nTake courage, my friend,\nYour redemption is near,\nThe battle belongs to the Lord!"]
+        ],
+        "number": "9",
+        "copyright": "Copyright © 1985 Fairhill Music. Song No. 21583, CCLI License # found on p.66"
+    },
+    {
+        "title": "Be Exalted, O God",
+        "author": "Brent Chambers",
+        "lyrics": [
+            ["Verse", "I will give thanks to Thee,\nO Lord, among the people.\nI will sing praises\nTo Thee among the nations.\nFor Thy steadfast love is great,\nIs great to the Heavens,\nAnd Thy faithfulness,\nThy faithfulness, to the clouds."],
+            ["Refrain", "Be exalted, O God, above the Heavens.\nLet Thy glory be over all the earth! (2x)"]
+        ],
+        "number": "10",
+        "copyright": "Copyright © 1977 Scripture In Song. Song No. 21112, CCLI License # found on p.66"
     }
 ]

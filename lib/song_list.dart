@@ -19,7 +19,7 @@ class _SongListScreenState extends State<SongListScreen> {
   void initState() {
     super.initState();
     filteredSongs = List.from(widget.songs)
-      ..sort((a, b) => a.title.compareTo(b.title));
+      ..sort((a, b) => a.number.compareTo(b.title));
   }
 
   void updateSearch(String query) {
@@ -30,7 +30,7 @@ class _SongListScreenState extends State<SongListScreen> {
               .where(
                 (song) =>
                     song.title.toLowerCase().contains(searchQuery) ||
-                    //song.lyrics.toLowerCase().contains(searchQuery) ||
+                    song.lyrics.expand((line) => line).join(" ").toLowerCase().contains(searchQuery) ||
                     //Implement song lyrics search later
                     song.number.toString().contains(searchQuery),
               )
