@@ -135,30 +135,24 @@ class _SongPageState extends State<SongPage> {
         if (!showChords)
           Text(
             chordsOnlyLine,
-            style: GoogleFonts.robotoMono(
+            style: TextStyle(
               fontSize: textSize,
               height: 1.2,
-            ).copyWith(
-              fontFamilyFallback: const [
-                'Menlo',
-                'Courier',
-                'SFMono-Regular',
-                'monospace',
-              ],
             ),
           ),
         Text(
           lyricText,
-          style: GoogleFonts.robotoMono(
+          style: TextStyle(
+            fontFamily: !showChords ? 'monospace' : null,
             fontSize: textSize,
             height: 1.2,
           ).copyWith(
-            fontFamilyFallback: const [
+            fontFamilyFallback: !showChords ? const [
               'Menlo',
               'Courier',
               'SFMono-Regular',
               'monospace',
-            ],
+            ] : null,
           ),
         ),
       ],

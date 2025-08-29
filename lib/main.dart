@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'song_list.dart';
 import 'song.dart';
@@ -35,9 +34,6 @@ class SongbookApp extends StatelessWidget {
     final songsFuture = readJSON();
 
     return MaterialApp(
-      theme: ThemeData(
-        textTheme: GoogleFonts.robotoMonoTextTheme(),
-      ),
       home: FutureBuilder<List<Song>>(
         future: songsFuture,
         builder: (context, snapshot) {
