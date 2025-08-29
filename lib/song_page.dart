@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'song.dart';
 
 class SongPage extends StatefulWidget {
@@ -22,77 +23,79 @@ class _SongPageState extends State<SongPage> {
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       builder: (BuildContext context) {
-        return Container(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setModalState) {
+            return Container(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'Settings',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.close),
+                        onPressed: () => Navigator.pop(context),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
                   const Text(
-                    'Settings',
+                    'Text Size',
                     style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
-                  IconButton(
-                    icon: const Icon(Icons.close),
-                    onPressed: () => Navigator.pop(context),
+                  const SizedBox(height: 10),
+                  Row(
+                    children: [
+                      const Text('12', style: TextStyle(fontSize: 12)),
+                      Expanded(
+                        child: Slider(
+                          value: _textSize,
+                          min: 12.0,
+                          max: 32.0,
+                          divisions: 20,
+                          label: _textSize.round().toString(),
+                          onChanged: (value) {
+                            // Update both the page state and the bottom sheet state
+                            setState(() {
+                              _textSize = value;
+                            });
+                            setModalState(() {});
+                          },
+                          onChangeStart: (value) {},
+                          onChangeEnd: (value) {},
+                        ),
+                      ),
+                      const Text('32', style: TextStyle(fontSize: 16)),
+                    ],
                   ),
-                ],
-              ),
-              const SizedBox(height: 20),
-              const Text(
-                'Text Size',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              const SizedBox(height: 10),
-              Row(
-                children: [
-                  const Text('12', style: TextStyle(fontSize: 12)),
-                  Expanded(
-                    child: Slider(
-                      value: _textSize,
-                      min: 12.0,
-                      max: 32.0,
-                      divisions: 20,
-                      label: _textSize.round().toString(),
-                      onChanged: (value) {
-                        setState(() {
-                          _textSize = value;
-                        });
-                      },
-                      onChangeStart: (value) {
-                        // Optional: Add haptic feedback when starting to drag
-                      },
-                      onChangeEnd: (value) {
-                        // Optional: Add haptic feedback when finishing drag
-                      },
+                  const SizedBox(height: 10),
+                  Center(
+                    child: Text(
+                      '${_textSize.round()}',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).primaryColor,
+                      ),
                     ),
                   ),
-                  const Text('32', style: TextStyle(fontSize: 16)),
+                  const SizedBox(height: 20),
                 ],
               ),
-              const SizedBox(height: 10),
-              Center(
-                child: Text(
-                  '${_textSize.round()}',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).primaryColor,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
-            ],
-          ),
+            );
+          },
         );
       },
     );
@@ -132,17 +135,30 @@ class _SongPageState extends State<SongPage> {
         if (!showChords)
           Text(
             chordsOnlyLine,
-            style: TextStyle(
-              fontFamily: 'monospace',
+            style: GoogleFonts.robotoMono(
               fontSize: textSize,
               height: 1.2,
+            ).copyWith(
+              fontFamilyFallback: const [
+                'Menlo',
+                'Courier',
+                'SFMono-Regular',
+                'monospace',
+              ],
             ),
           ),
         Text(
           lyricText,
-          style: TextStyle(
+          style: GoogleFonts.robotoMono(
             fontSize: textSize,
             height: 1.2,
+          ).copyWith(
+            fontFamilyFallback: const [
+              'Menlo',
+              'Courier',
+              'SFMono-Regular',
+              'monospace',
+            ],
           ),
         ),
       ],
