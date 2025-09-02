@@ -31,7 +31,6 @@ class _SongListScreenState extends State<SongListScreen> {
                 (song) =>
                     song.title.toLowerCase().contains(searchQuery) ||
                     song.lyrics.expand((line) => line).join(" ").toLowerCase().contains(searchQuery) ||
-                    //Implement song lyrics search later
                     song.number.toString().contains(searchQuery),
               )
               .toList()

@@ -12,7 +12,7 @@ class SongPage extends StatefulWidget {
 
 class _SongPageState extends State<SongPage> {
   double _textSize = 18.0; // Default text size for lyrics
-  bool showChords = true;
+  bool showChords = false;
 
   void _showSettingsBottomSheet() {
     showModalBottomSheet(
@@ -33,10 +33,7 @@ class _SongPageState extends State<SongPage> {
                 children: [
                   const Text(
                     'Settings',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   IconButton(
                     icon: const Icon(Icons.close),
@@ -47,10 +44,7 @@ class _SongPageState extends State<SongPage> {
               const SizedBox(height: 20),
               const Text(
                 'Text Size',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
               ),
               const SizedBox(height: 10),
               Row(
@@ -109,7 +103,11 @@ class _SongPageState extends State<SongPage> {
       // Replace the chord block with spaces so chords align
       final start = m.start;
       final length = m.group(0)!.length;
-      chordLine = chordLine.replaceRange(start, m.end, ' ' * (length - 2)); // subtract 2 for %%
+      chordLine = chordLine.replaceRange(
+        start,
+        m.end,
+        ' ' * (length - 2),
+      ); // subtract 2 for %%
     }
 
     // Extract just the chords in order
@@ -138,17 +136,49 @@ class _SongPageState extends State<SongPage> {
               height: 1.2,
             ),
           ),
-        Text(
-          lyricText,
-          style: TextStyle(
-            fontSize: textSize,
-            height: 1.2,
-          ),
-        ),
+        Text(lyricText, style: TextStyle(fontSize: textSize, height: 1.2)),
       ],
     );
   }
 
+  String stripChords(String line) {
+    // removes all %...%
+    return line.replaceAll(RegExp(r'%.*?%'), '');
+  }
+
+  String buildChordLine(String line) {
+    String lyric = '';
+    String chordLine = '';
+    bool inChord = false;
+    String buffer = '';
+    int lyricPos = 0; // track position of lyrics without chords
+
+    for (int i = 0; i < line.length; i++) {
+      if (line[i] == '%') {
+        if (inChord) {
+          // chord ended → align chord exactly above the current lyric position
+          chordLine = chordLine.padRight(lyricPos);
+          chordLine += buffer;
+          buffer = '';
+        }
+        if (!inChord) {
+          if (chordLine.isNotEmpty && chordLine[chordLine.length - 1] == ' ') {
+            chordLine = chordLine.substring(0, chordLine.length - 1);
+          }
+        }
+        inChord = !inChord;
+      } else if (inChord) {
+        buffer += line[i];
+
+      } else {
+        lyric += line[i];
+        chordLine += ' ';
+        lyricPos++; // only increment when real lyric characters are added
+      }
+    }
+
+    return chordLine;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -172,9 +202,35 @@ class _SongPageState extends State<SongPage> {
               ),
             ),
             const SizedBox(height: 4),
-            ...sectionLines.map(
-              (line) => buildLyricLine(line, showChords, _textSize),
-            ),
+            ...sectionLines.map((line) {
+              final lyricLine = stripChords(line);
+              final chordLine = buildChordLine(line);
+
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  if (showChords)
+                    SizedBox(
+                      height: 20, // fixed height for chord line
+                      child: Text(
+                        chordLine,
+                        style: TextStyle(
+                          fontSize: _textSize,
+                          fontFamily: 'monospace',
+                          color: Colors.blue, // optional for chords
+                        ),
+                      ),
+                    ),
+                  Text(
+                    lyricLine,
+                    style: TextStyle(
+                      fontSize: _textSize,
+                      fontFamily: showChords ? 'monospace' : null,
+                    ),
+                  ),
+                ],
+              );
+            }),
             const SizedBox(height: 20), // space between sections
           ],
         ),
@@ -187,10 +243,7 @@ class _SongPageState extends State<SongPage> {
         padding: const EdgeInsets.only(top: 32.0),
         child: Text(
           widget.song.copyright,
-          style: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w300,
-          ),
+          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
           textAlign: TextAlign.center,
         ),
       ),
@@ -201,31 +254,23 @@ class _SongPageState extends State<SongPage> {
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              widget.song.title,
-              style: const TextStyle(fontSize: 20),
-            ),
+            Text(widget.song.title, style: const TextStyle(fontSize: 20)),
             Text(
               widget.song.author,
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w300,
-              ),
+              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
             ),
           ],
         ),
         //Show Chords button
         actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 4.0)
-          ),
+          Padding(padding: const EdgeInsets.only(right: 4.0)),
           IconButton(
-            icon: Icon(showChords ? Icons.music_off : Icons.music_note),
+            icon: Icon(!showChords ? Icons.music_off : Icons.music_note),
             onPressed: () {
               setState(() {
                 showChords = !showChords;
               });
-            }
+            },
           ),
           //Settings button
           IconButton(
@@ -238,9 +283,7 @@ class _SongPageState extends State<SongPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ListView(
-          children: lyricWidgets,
-        ),
+        child: ListView(children: lyricWidgets),
       ),
     );
   }
